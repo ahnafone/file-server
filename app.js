@@ -37,6 +37,10 @@ app.get("/", (req, res) => {
 
 function getDir(filepath) {
     let out = fs.readdirSync(filepath, { withFileTypes: true });
+    out.sort((a, b) => {
+        return fs.statSync(filepath + "/" + b.name).mtime.getTime() -
+                fs.statSync(filepath + "/" + a.name).mtime.getTime();
+    });
 
     let dirs = [];
     let files = [];
