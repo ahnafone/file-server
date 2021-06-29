@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>File Server</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="/src/styles.css">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    </head>
+
+
+
+    <body>
+        <div class="outer">
+            <% if(prevDir.length != 0) { %>
+                <div class="sidebar">
+                    <div class="inner">
+                        <div class="dir-links"> <a href="/home<%= prevPath %>"> <%= prevDir[0] %> </a> </div>
+                        <% for(let i=1; i<prevDir.length; i++) { %>
+                            <div class="dir-links">
+                                ➥ &nbsp; <a href="/home<%= prevPath + "/" + prevDir[i] %>"> <%= prevDir[i] %> </a>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            <% } %>
+
+            <div class="main">
+                <div class="inner">
+                    <div class="main-col">
+                        <% for(let d of dirs) { %>
+                            <div class="folder">
+                                <img src="/src/folder.jpg">
+                                <a href="/home<%= path + d %>"> <%= d %> </a>
+                            </div>
+                        <% } %>
+
+                        <% for(let f of files) { %>
+                            <a href="/data<%= path + f %>"> <%= f %> </a>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- JS Scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/4375fa6ff2.js" crossorigin="anonymous"></script>
+        <script src="/src/scripts.js"></script>
+    </body>
+</html>

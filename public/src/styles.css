@@ -1,0 +1,59 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+}
+html, body { height: 100%; }
+
+
+.outer {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.inner {
+    margin: 3vw;
+}
+
+.sidebar {
+    width: 30%;
+    color: white;
+    background-color: navy;
+    max-height: 100vh;
+    overflow: auto;
+}
+.sidebar a { color: white; }
+.sidebar a:focus { color: wheat; }
+
+.dir-links {
+    display: block;
+    margin: 5px 0;
+}
+
+
+.main {
+    flex: 1;
+    max-height: 100vh;
+    overflow: auto;
+}
+
+.main-col {
+    display: flex;
+    flex-direction: column;
+}
+.main-col a {
+    display: inline-block;
+    color: black;
+    margin: 8px 0;
+    margin-left: 20px;
+}
+
+.folder {
+    display: flex;
+    align-items: center;
+}
+.folder img {
+    width: 20px;
+    margin-right: 10px;
+}
+.folder p { margin: 5px; }
+.folder a { text-decoration: none; }
