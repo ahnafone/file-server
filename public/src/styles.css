@@ -16,6 +16,7 @@ html, body { height: 100%; }
 
 .sidebar {
     width: 30%;
+    max-width: 200px;
     color: white;
     background-color: navy;
     max-height: 100vh;
@@ -47,6 +48,7 @@ html, body { height: 100%; }
     margin-left: 20px;
 }
 
+
 .folder {
     display: flex;
     align-items: center;
@@ -57,3 +59,27 @@ html, body { height: 100%; }
 }
 .folder p { margin: 5px; }
 .folder a { text-decoration: none; }
+
+
+.file-link {
+    display: inline-block;
+    margin-left: 35px;
+}
+.file-link p {
+    display: inline-block;
+    color: black;
+    text-decoration: underline;
+    cursor: pointer;
+    margin: 9px 0;
+}
+
+
+/* Video player classes */
+.player {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player video { width: 90%; }

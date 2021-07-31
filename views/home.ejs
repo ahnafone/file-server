@@ -36,23 +36,22 @@
                     <div class="main-col">
                         <% for(let d of dirs) { %>
                             <div class="folder">
-                                <img src="/src/folder.jpg">
-                                <a href="/home<%= path + d %>"> <%= d %> </a>
+                                <a href="/home<%= path + d %>">
+                                    <img src="/src/folder.jpg">
+                                    <%= d %>
+                                </a>
                             </div>
                         <% } %>
 
-                        <% for(let f of files) { %>
-                            <a href="/data<%= path + f %>" target="_blank"> <%= f %> </a>
+                        <% for(let i=0; i<files.length; i++) { %>
+                            <div class="file-link">
+                                <a href="/data<%= path + encodedFiles[i] %>" target="_blank"> <%= files[i] %> </a>
+                            </div>
                         <% } %>
                     </div>
                 </div>
             </div>
         </div>
 
-
-        <!-- JS Scripts -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://kit.fontawesome.com/4375fa6ff2.js" crossorigin="anonymous"></script>
-        <script src="/src/scripts.js"></script>
     </body>
 </html>

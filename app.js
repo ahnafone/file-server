@@ -11,18 +11,6 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 const port = process.env.PORT || 80;
-let mime  = {
-    '.mp4': 'video/mp4',
-    '.ts': 'video/mp2t',
-    '.mkv': 'video/x-matroska',
-    '.avi': 'video/x-msvideo',
-    '.flv': 'video/x-flv',
-    '.wmv': 'video/x-ms-wmv',
-    '.jpg': 'image/jpeg',
-    '.jpeg': 'image/jpeg',
-    '.png': 'image/png',
-    '.gif': 'image/gif'
-}
 
 
 
@@ -44,16 +32,20 @@ function getDir(filepath) {
 
     let dirs = [];
     let files = [];
+    let filesEncoded = [];
 
     for(let f of out) {
         if(f.isDirectory()) {
             dirs.push(f.name);
         } else {
             files.push(f.name);
+            filesEncoded.push(encodeURIComponent(f.name));
         }
     }
-    return({ dirs, files });
+    return({ dirs, files, filesEncoded });
 }
+
+
 
 app.get("/home", (req, res) => {
     let dirr = getDir("./public/data/");
@@ -61,10 +53,12 @@ app.get("/home", (req, res) => {
     res.render("home", {
         dirs: dirr.dirs,
         files: dirr.files,
+        encodedFiles: dirr.filesEncoded,
         path: "/",
         prevDir: []
     });
 });
+
 
 app.get("/home/:path(*)", (req, res) => {
     let path = req.params.path;
@@ -86,6 +80,7 @@ app.get("/home/:path(*)", (req, res) => {
     res.render("home", {
         dirs: dirr.dirs,
         files: dirr.files,
+        encodedFiles: dirr.filesEncoded,
         path: "/" + path + "/",
         prevPath: prevPath,
         prevDir
